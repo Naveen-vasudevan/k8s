@@ -11,6 +11,7 @@ resources:
 variables:
   tag: '$(Build.BuildId)'
 
+
 stages:
 - stage: Build
   displayName: Build image
@@ -27,8 +28,8 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    - task: PublishBuildArtifacts@1
+      inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+         ArtifactName: 'drop'
+         publishLocation: 'Container'
