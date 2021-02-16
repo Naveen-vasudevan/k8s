@@ -30,6 +30,24 @@ stages:
           $(tag)
     - task: CopyFiles@2
       inputs:
+       SourceFolder: 'k8s'
+       Contents: 
+         defination.yaml
+         service.yaml
+       targetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+    - task: KubernetesManifest@0
+      inputs:
+        action: deploy
+        manifests: 
+          $(Build.ArtifactStagingDirectory)/defination.yaml
+          $(Build.ArtifactStagingDirectory)/service.yaml
+        kubernetesServiceConnection: 'k8s'
+        containers: 
+              Naveen-vasudevan/k8s
+    
+    - task: CopyFiles@2
+      inputs:
        targetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
       inputs:
