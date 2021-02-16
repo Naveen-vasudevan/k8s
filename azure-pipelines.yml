@@ -28,21 +28,11 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
-    - task: CopyFiles@2
+          
+      
+    - task: PublishBuildArtifacts@1
       inputs:
-       SourceFolder: 'k8s'
-       Contents: 
-         defination.yaml
-         service.yaml
-       targetFolder: '$(Build.ArtifactStagingDirectory)'
-    
-    - task: KubernetesManifest@0
-      inputs:
-        action: deploy
-        manifests: 
-          $(Build.ArtifactStagingDirectory)/defination.yaml
-          $(Build.ArtifactStagingDirectory)/service.yaml
-        kubernetesServiceConnection: 'k8s'
-        containers: 
-              Naveen-vasudevan/k8s
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
     
