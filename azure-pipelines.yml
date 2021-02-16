@@ -30,7 +30,7 @@ stages:
           $(tag)
     - task: CopyFiles@2
       inputs:
-       SourceFolder: 'naveen-vasudevan/k8s'
+       SourceFolder: 'k8s'
        Contents: 
          defination.yaml
          service.yaml
