@@ -30,7 +30,7 @@ stages:
           $(tag)
     - task: CopyFiles@2
       inputs:
-       SourceFolder: 'k8s'
+       SourceFolder: 'naveen-vasudevan/k8s'
        Contents: 
          defination.yaml
          service.yaml
@@ -46,11 +46,3 @@ stages:
         containers: 
               Naveen-vasudevan/k8s
     
-    - task: CopyFiles@2
-      inputs:
-       targetFolder: '$(Build.ArtifactStagingDirectory)'
-    - task: PublishBuildArtifacts@1
-      inputs:
-         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-         ArtifactName: 'drop'
-         publishLocation: 'Container'
