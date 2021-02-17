@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '0968ead4-f53d-4c4a-87e2-7b23c3d7dd8d'
-  imageRepository: 'nginx19'
+  imageRepository: 'newnginx'
   containerRegistry: 'zscaler.azurecr.io'
   dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
@@ -56,5 +56,6 @@ stages:
            $(Build.ArtifactStagingDirectory)/service.yaml
         kubernetesServiceConnection: 'test'
         containers: |
-            zscaler.azurecr.io/nginx19:57
+            zscaler.azurecr.io/newnginx:77
+
 
