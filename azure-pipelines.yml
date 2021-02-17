@@ -51,7 +51,7 @@ stages:
         manifests: |
            $(Build.ArtifactStagingDirectory)/defination.yaml
            $(Build.ArtifactStagingDirectory)/service.yaml
-        kubernetesServiceConnection: 'cluster-connection'
+        kubernetesServiceConnection: 'test'
         containers: |
             zscaler.azurecr.io/nginx19:57
 
