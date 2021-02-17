@@ -37,3 +37,21 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: 'k8s'
+        Contents: |
+          defination.yaml
+          service.yaml
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+ 
+    - task: KubernetesManifest@0
+      inputs:
+        action: 'deploy'
+        manifests: |
+           $(Build.ArtifactStagingDirectory)/defination.yaml
+           $(Build.ArtifactStagingDirectory)/service.yaml
+        kubernetesServiceConnection: 'cluster-connection'
+        containers: |
+            zscaler.azurecr.io/nginx19:57
+
