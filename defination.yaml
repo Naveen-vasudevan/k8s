@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-image
-        image: nginx:latest
+        image: zscaler.azurecr.io/nginx19:74
         ports:
         - containerPort: 80
