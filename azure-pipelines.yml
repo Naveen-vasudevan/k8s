@@ -42,7 +42,7 @@ stages:
        targetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: CopyFiles@2
       inputs:
-        SourceFolder: '$(Build.SourcesDirecorty)'
+        SourceFolder: /k8s
         Contents: |
           defination.yaml
           service.yaml
