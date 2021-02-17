@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '0968ead4-f53d-4c4a-87e2-7b23c3d7dd8d'
   imageRepository: 'nginx19'
   containerRegistry: 'zscaler.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -36,4 +36,4 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(latest)
+          $(tag)
